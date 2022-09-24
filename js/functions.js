@@ -35,7 +35,7 @@ const iconifyIcon = document.querySelector("iconify-icon");
 
 let coordinates;
 
-fetch("http://ip-api.com/json/")
+fetch("https://ipwho.is/")
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -76,15 +76,24 @@ fetch("http://ip-api.com/json/")
         uvindex.textContent = "UV Index: " + data.currentConditions.uvindex;
         icon.textContent = "Icon: " + data.currentConditions.icon;
 
-        if (data.currentConditions.icon == "snow") return iconifyIcon.icon = "twemoji:cloud-with-snow";
-        if (data.currentConditions.icon == "rain") return iconifyIcon.icon = "twemoji:cloud-with-rain";
-        if (data.currentConditions.icon == "fog") return iconifyIcon.icon = "BRAK";
-        if (data.currentConditions.icon == "wind") return iconifyIcon.icon = "twemoji:wind-face";
-        if (data.currentConditions.icon == "cloudy") return iconifyIcon.icon = "twemoji:cloud";
-        if (data.currentConditions.icon == "partly-cloudy-day") return iconifyIcon.icon = "twemoji:sun-behind-small-cloud";
-        if (data.currentConditions.icon == "partly-cloudy-night") return iconifyIcon.icon = "twemoji:cloud";
-        if (data.currentConditions.icon == "clear-day") return iconifyIcon.icon = "twemoji:sun";
-        if (data.currentConditions.icon == "clear-night") return iconifyIcon.icon = "twemoji:new-moon";
+        if (data.currentConditions.icon == "snow")
+          return (iconifyIcon.icon = "twemoji:cloud-with-snow");
+        if (data.currentConditions.icon == "rain")
+          return (iconifyIcon.icon = "twemoji:cloud-with-rain");
+        if (data.currentConditions.icon == "fog")
+          return (iconifyIcon.icon = "BRAK");
+        if (data.currentConditions.icon == "wind")
+          return (iconifyIcon.icon = "twemoji:wind-face");
+        if (data.currentConditions.icon == "cloudy")
+          return (iconifyIcon.icon = "twemoji:cloud");
+        if (data.currentConditions.icon == "partly-cloudy-day")
+          return (iconifyIcon.icon = "twemoji:sun-behind-small-cloud");
+        if (data.currentConditions.icon == "partly-cloudy-night")
+          return (iconifyIcon.icon = "twemoji:cloud");
+        if (data.currentConditions.icon == "clear-day")
+          return (iconifyIcon.icon = "twemoji:sun");
+        if (data.currentConditions.icon == "clear-night")
+          return (iconifyIcon.icon = "twemoji:new-moon");
 
         timezone.textContent = "Timezone: " + data.timezone;
         latitude.textContent = `Latitude: ${data.latitude}°`;
