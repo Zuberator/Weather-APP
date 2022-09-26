@@ -77,23 +77,22 @@ fetch("https://ipwho.is/")
         icon.textContent = "Icon: " + data.currentConditions.icon;
 
         if (data.currentConditions.icon == "snow")
-          return (iconifyIcon.icon = "twemoji:cloud-with-snow");
+          iconifyIcon.icon = "twemoji:cloud-with-snow";
         if (data.currentConditions.icon == "rain")
-          return (iconifyIcon.icon = "twemoji:cloud-with-rain");
-        if (data.currentConditions.icon == "fog")
-          return (iconifyIcon.icon = "BRAK");
+          iconifyIcon.icon = "twemoji:cloud-with-rain";
+        if (data.currentConditions.icon == "fog") iconifyIcon.icon = "BRAK";
         if (data.currentConditions.icon == "wind")
-          return (iconifyIcon.icon = "twemoji:wind-face");
+          iconifyIcon.icon = "twemoji:wind-face";
         if (data.currentConditions.icon == "cloudy")
-          return (iconifyIcon.icon = "twemoji:cloud");
+          iconifyIcon.icon = "twemoji:cloud";
         if (data.currentConditions.icon == "partly-cloudy-day")
-          return (iconifyIcon.icon = "twemoji:sun-behind-small-cloud");
+          iconifyIcon.icon = "twemoji:sun-behind-small-cloud";
         if (data.currentConditions.icon == "partly-cloudy-night")
-          return (iconifyIcon.icon = "twemoji:cloud");
+          iconifyIcon.icon = "twemoji:cloud";
         if (data.currentConditions.icon == "clear-day")
-          return (iconifyIcon.icon = "twemoji:sun");
+          iconifyIcon.icon = "twemoji:sun";
         if (data.currentConditions.icon == "clear-night")
-          return (iconifyIcon.icon = "twemoji:new-moon");
+          iconifyIcon.icon = "twemoji:new-moon";
 
         timezone.textContent = "Timezone: " + data.timezone;
         latitude.textContent = `Latitude: ${data.latitude}°`;
@@ -103,6 +102,12 @@ fetch("https://ipwho.is/")
         let g = 255 - Math.abs(10 * data.currentConditions.temp);
         let b = 255 - data.currentConditions.temp * 10;
         card.style.background = `rgb(${r}, ${g}, ${b})`;
+
+        // CHANGE BROSER BAR COLOR BASED ON CURRENT TEMPERATURE
+
+        document
+          .querySelector('meta[name="theme-color"]')
+          .setAttribute("content", `rgb(${r}, ${g}, ${b})`);
       });
   });
 
